@@ -6,12 +6,11 @@ export default async (req, res) => {
     }=req
 
     const { db } = await connectToDatabase()
-    let account = {}
+    let account =  await db.collection("accounts").find({name:name}).toArray();
     if(req.method=="POST"){
         await db.collection("accounts").update({name:name},{name:name},{upsert:true})
-        res.json({message:"seccusfully inserted"})
+        res.json({account})
     }else{
-        account =  await db.collection("accounts").find({name:name}).toArray();
         res.json(account);
     }
   };

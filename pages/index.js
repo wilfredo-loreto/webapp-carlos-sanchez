@@ -1,6 +1,6 @@
 import AdminUI from "../components/adminui";
-import axios from "axios";
 import Layout from "../components/layout";
+import { connectToDatabase } from "../util/mongodb";
 
 export default function Home({ accounts }) {
   return (
@@ -11,9 +11,9 @@ export default function Home({ accounts }) {
 }
 
 export async function getServerSideProps() {
-  const data = await axios.get(`http://localhost:3000/api/accounts`);
-
+  const { db } = await connectToDatabase()
+  const accounts =  await db.collection("accounts").find({}).sort({name:1}).toArray();
   return {
-    props: { accounts: data.data },
+    props: { accounts:JSON.parse(JSON.stringify(accounts)) },
   };
 }

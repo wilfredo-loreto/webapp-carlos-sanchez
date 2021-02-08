@@ -10,6 +10,8 @@ export default async (req, res) => {
     if(req.method=="POST"){
         await db.collection("accounts").update({name:name},{name:name},{upsert:true})
         res.json({account})
+    }else if(req.method=="PUT"){
+        await db.collection("accounts").update({name:name},{name:name,deeplink:`app.amagpieinthesky.com/${name}`},{upsert:true})
     }else{
         res.json(account);
     }

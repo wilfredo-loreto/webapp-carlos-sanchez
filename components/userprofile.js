@@ -3,9 +3,11 @@ import React from "react"
 function UserProfile( {account} ) {
     
     return (
-      <div>
+      <div className={"admincontainer usercontainer"}>
+        <div className={"smallcontainer"}>
           <h1>This Page is for {account.name}</h1>
-          <button>Share</button>
+          <button className={"sharebutton"}>Share</button>
+        </div>
       </div>
     );
   }

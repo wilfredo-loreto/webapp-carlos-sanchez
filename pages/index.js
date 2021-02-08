@@ -1,12 +1,11 @@
 import AdminUI from "../components/adminui";
-import Layout from "../components/layout";
 import { connectToDatabase } from "../util/mongodb";
 
 export default function Home({ accounts }) {
   return (
-    <Layout>
+    
       <AdminUI accounts={accounts} />
-    </Layout>
+  
   );
 }
 

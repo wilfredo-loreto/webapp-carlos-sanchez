@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AccountsList from "./accountslist";
 import axios from "axios";
 
+
 export default class AdminUI extends Component {
   constructor(props) {
     super(props);
@@ -48,19 +49,22 @@ export default class AdminUI extends Component {
     render() {
     return (
         
-        <div>
+        <div className={"admincontainer"}>
+          <div className={"smallcontainer"}>
           <h1>APP</h1>
           <span className={""}>Insert a New Account</span>
           <input
             name="name"
             onChange={this.onInputChange}
             placeholder="ex. James Smith"
-          />
+            autoComplete="off"
+            />
           <button className="create-button" onClick={this.createAccount}>
             {" "}
             Create{" "}
           </button>
           <AccountsList accounts={this.state.accounts} />
+            </div>
         </div>
 
     );

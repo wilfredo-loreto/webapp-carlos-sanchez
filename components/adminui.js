@@ -28,7 +28,7 @@ export default class AdminUI extends Component {
           console.log(res);
           
       }catch(err){
-          console.log(error);
+          console.log(err);
       }
         
     } else {
